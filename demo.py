@@ -1,14 +1,14 @@
 import cv2
 from ultralytics import YOLO
-import torch
+# import torch
 import matplotlib.pyplot as plt
 
 # Check if CUDA is available and set the device accordingly
-device = "cuda" if torch.cuda.is_available() else "cpu"
-print(f"Using device: {device}")
+# device = "cuda" if torch.cuda.is_available() else "cpu"
+# print(f"Using device: {device}")
 
 # Loading the v8 model
-model = YOLO("yolov8n.pt").to(device)
+model = YOLO("yolov8n.pt")
 
 # Opening the video file
 video_path = "E:\\Major_demo\\Data\\2.mp4"
@@ -57,7 +57,7 @@ while cap.isOpened():
     roi_frame = frame[roi_y:roi_y+roi_height, roi_x:roi_x+roi_width]
     
     # Perform detection with YOLOv8
-    results = model(roi_frame, device= device)
+    results = model(roi_frame)
 
     # Visualize the results on the frame
     annotated_roi = results[0].plot()
