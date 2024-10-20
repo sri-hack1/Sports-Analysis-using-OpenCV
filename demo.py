@@ -21,8 +21,6 @@ if not cap.isOpened():
 ret, frame = cap.read()
 if not ret:
     print("Could not read the frame")
-    cap.release()
-    exit()
     
 # Display the roi in the frame
 roi = cv2.selectROI("Select ROI", frame, fromCenter=False, showCrosshair=True)
